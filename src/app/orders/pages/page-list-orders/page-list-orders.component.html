@@ -1,8 +1,21 @@
-<!-- string interpolation -->
-<p>{{ title }}</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" *ngFor='let i of headers'>{{ i }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let obj of tab'>
+      <td>Action</td>
+      <td>{{ obj.typePresta | uppercase}}</td>
+      <td>{{ obj.client}}</td>
+      <td>{{ obj.nbJours}}</td>
+      <td>{{ obj.tjmHt}}</td>
+      <td>{{ obj.tjmHt | total :obj.nbJours}}</td>
+      <td>{{ obj.tjmHt | total :obj.nbJours :obj.tva}}</td>
+      <td>{{ obj.state }}</td>
 
-<ul>
-  <!-- répérer la balise qui se répète -->
-  <li *ngFor='let i of tab'>{{ i.client }}</li>
-</ul>
+    </tr>
 
+  </tbody>
+</table>

@@ -14,6 +14,18 @@ export class PageListOrdersComponent {
 
   public title: string = 'Liste des Orders';
 
+  // tableau pour lister tous les noms des colonnes
+  public headers: string [] = [
+    'Action',
+    'Type',
+    'Client',
+    'Nb Jours',
+    'Tjm Ht',
+    'Total HT',
+    'Total TTC',
+    'Etat'
+  ]
+
 
   // créer une propriete qui va stocker data
   public tab!: Order[]; // undefined
@@ -34,4 +46,16 @@ export class PageListOrdersComponent {
 
     //  console.log(this.tab);// undefined
   }
+
+  // remplacé par un pipe
+  public total(val:number, coef: number, tva?:number){
+    console.log('déclenché');// ??? 3 fois ?
+
+    // attention à cause du Change Detection, les méthodes sont plusieurs fois
+    // utilisation d'un Pipe |
+
+    if (tva) return val * coef * (1 + tva / 100);
+    return val * coef;
+  }
+
 }
