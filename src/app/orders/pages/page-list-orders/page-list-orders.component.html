@@ -1,2 +1,8 @@
-<p>page-list-orders works!</p>
+<!-- string interpolation -->
+<p>{{ title }}</p>
+
+<ul>
+  <!-- répérer la balise qui se répète -->
+  <li *ngFor='let i of tab'>{{ i.client }}</li>
+</ul>
 

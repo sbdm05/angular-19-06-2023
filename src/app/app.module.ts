@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 import { OrdersModule } from './orders/orders.module';
 
 @NgModule({
@@ -20,6 +21,8 @@ import { OrdersModule } from './orders/orders.module';
     SharedModule,
     NgbModule,
     FontAwesomeModule,
+    HttpClientModule,
+    OrdersModule
   ],
   providers: [],
   bootstrap: [AppComponent]
