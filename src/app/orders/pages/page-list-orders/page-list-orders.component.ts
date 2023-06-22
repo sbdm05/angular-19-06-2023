@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Order } from 'src/app/core/models/order';
 import { OrdersService } from '../../service/orders.service';
 
@@ -8,14 +9,13 @@ import { OrdersService } from '../../service/orders.service';
   styleUrls: ['./page-list-orders.component.scss'],
 })
 export class PageListOrdersComponent {
-
   // pour afficher cette propriété dans l'html, vous utilisez
   // les {{ title }} = string interpolation
 
   public title: string = 'Liste des Orders';
 
   // tableau pour lister tous les noms des colonnes
-  public headers: string [] = [
+  public headers: string[] = [
     'Action',
     'Type',
     'Client',
@@ -23,15 +23,14 @@ export class PageListOrdersComponent {
     'Tjm Ht',
     'Total HT',
     'Total TTC',
-    'Etat'
-  ]
-
+    'Etat',
+  ];
 
   // créer une propriete qui va stocker data
   public tab!: Order[]; // undefined
 
   // accéder au service = injection de dépendances
-  constructor(private ordersService: OrdersService) {
+  constructor(private ordersService: OrdersService, private router: Router) {
     // console.log(this.ordersService.sumUp(1, 2));
 
     // utilisation de rxjs
@@ -39,7 +38,7 @@ export class PageListOrdersComponent {
       // console.log(data);
       // stocker data dans propriété locale
       this.tab = data;
-      console.log(this.tab);// [Order]
+      //console.log(this.tab);// [Order]
 
       // afficher dans html avec une boucle
     });
@@ -48,8 +47,8 @@ export class PageListOrdersComponent {
   }
 
   // remplacé par un pipe
-  public total(val:number, coef: number, tva?:number){
-    console.log('déclenché');// ??? 3 fois ?
+  public total(val: number, coef: number, tva?: number) {
+    console.log('déclenché'); // ??? 3 fois ?
 
     // attention à cause du Change Detection, les méthodes sont plusieurs fois
     // utilisation d'un Pipe |
@@ -58,4 +57,9 @@ export class PageListOrdersComponent {
     return val * coef;
   }
 
+  public goToEdit(id: number) {
+    console.log(id, 'id de obj cliqué');
+    // redirection vers une nouvelle page
+    this.router.navigate(['edit', id]);
+  }
 }

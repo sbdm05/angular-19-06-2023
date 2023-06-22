@@ -9,7 +9,7 @@ const routes: Routes = [
   // chemin vide nomdeDomaine.fr/
   { path: '', component: PageListOrdersComponent },
   { path: 'add', component: PageAddOrderComponent },
-  { path: 'edit', component: PageEditOrderComponent },
+  { path: 'edit/:id', component: PageEditOrderComponent },
   // sans stratégie de routing , sans lazy loading
   // { path: '**', component: PageNotFoundComponent},
 

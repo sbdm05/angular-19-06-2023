@@ -1,1 +1,10 @@
 <p>page-edit-order works!</p>
+
+<!-- récupérer un obj -->
+<div *ngIf='item'>
+  <app-form-order [init]='item' (submitted)='onEdit($event)'></app-form-order>
+</div>
+
+
+
+

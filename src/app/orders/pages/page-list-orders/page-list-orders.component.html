@@ -6,16 +6,25 @@
   </thead>
   <tbody>
     <tr *ngFor='let obj of tab'>
-      <td>Action</td>
+      <td><button class='btn btn-warning' (click)='goToEdit(obj.id)'>Editer</button></td>
       <td>{{ obj.typePresta | uppercase}}</td>
       <td>{{ obj.client}}</td>
       <td>{{ obj.nbJours}}</td>
-      <td>{{ obj.tjmHt}}</td>
-      <td>{{ obj.tjmHt | total :obj.nbJours}}</td>
-      <td>{{ obj.tjmHt | total :obj.nbJours :obj.tva}}</td>
+      <td>{{ obj.tjmHt | currency}}</td>
+      <td>{{ obj.tjmHt | total :obj.nbJours | currency}}</td>
+      <td>{{ obj.tjmHt | total :obj.nbJours :obj.tva | currency}}</td>
       <td>{{ obj.state }}</td>
 
     </tr>
 
   </tbody>
+
+
+  <!-- remplacé par un composant btn -->
+  <!-- ce btn doit nous renvoyer vers /add -->
+  <app-btn
+  label='+'
+  styleBtn='btn btn-success'
+  routeInfo='/add'></app-btn>
 </table>
+

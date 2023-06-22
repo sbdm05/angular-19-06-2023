@@ -7,6 +7,9 @@ import { Order } from 'src/app/core/models/order';
 @Injectable({
   providedIn: 'root',
 })
+
+
+
 export class OrdersService {
   constructor(private http: HttpClient) {}
 
@@ -16,6 +19,7 @@ export class OrdersService {
   }
 
   // méthode GET
+  // librairie rxjs
   public getDatas(): Observable<Order[]> {
     return this.http.get<Order[]>('http://localhost:3004/orders');
   }
@@ -26,7 +30,23 @@ export class OrdersService {
     // return le js
   // })
 
-  // méthode POST
+  // méthode POST/ INSERT
+  // dans PageAddOrder, on a => this.ordersService.add(obj).subscribe()
+  public add(obj: Order): Observable<Order>{
+    return this.http.post<Order>('http://localhost:3004/orders', obj);
+  }
+
+  // méthode getItemById altGr7 - utilisation des template strings
+  public getItemById(id: string): Observable<Order>{
+    console.log(id)
+    return this.http.get<Order>(`http://localhost:3004/orders/${id}`);
+  }
 
   // méthode PUT
+  public update(obj: Order): Observable<Order>{
+    return this.http.put<Order>(`http://localhost:3004/orders/${obj.id}`, obj);
+  }
+
+
+
 }

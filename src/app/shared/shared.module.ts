@@ -4,6 +4,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconCloseComponent } from './components/icon-close/icon-close.component';
 import { IconNavComponent } from './components/icon-nav/icon-nav.component';
 import { TotalPipe } from './pipes/total.pipe';
+import { BtnComponent } from './components/btn/btn.component';
+import { RouterModule } from '@angular/router';
 
 
 // FICHE D'IDENTITE DU MODULE
@@ -12,16 +14,19 @@ import { TotalPipe } from './pipes/total.pipe';
   declarations: [
     IconCloseComponent,
     IconNavComponent,
-    TotalPipe
+    TotalPipe,
+    BtnComponent
   ],
   imports: [
     CommonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    RouterModule
   ],
   exports: [
     IconCloseComponent,
     IconNavComponent,
-    TotalPipe
+    TotalPipe,
+    BtnComponent
   ]
 })
 export class SharedModule { }
